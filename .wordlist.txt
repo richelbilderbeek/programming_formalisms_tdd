@@ -5,6 +5,7 @@ behaviour
 Bilderbeek
 Bioinformatics
 codebase
+codecov
 Codecov
 CodeRefinery
 config
