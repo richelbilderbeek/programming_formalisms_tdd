@@ -172,6 +172,7 @@ if __name__ == "__main__":
     print("Start of tests")
     test_is_even()
     test_is_number()
+    test_is_odd()
     test_is_string()    
     test_is_zero()
     
