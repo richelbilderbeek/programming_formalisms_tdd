@@ -7,8 +7,6 @@
 `check_is_number(x)`     
 `check_is_probability(p)`  
 `check_is_string(x)`       
-`divide_safely(a, b)`    
-`is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
 
 ### Medium
 
@@ -57,6 +55,20 @@ Name                          |Purpose
 `is_primorial_prime(x)`       |Returns `True` if `x` is a primorial prime
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
+
+def divide_safely(a, b):
+    """
+    Divide `a` by `b`.
+    If `a` or `b` are not a floating point number, a `TypeError` is raised.
+    If `b` is `0.0`, a `RuntimeError` is raised.
+    
+    Returns `a` divided by `b`
+    """
+    if b == 0.0:
+        raise RuntimeError(
+            "'b' must not be zero"
+        )
+    return a / b
 
 def is_dividable_by_three(x):
     """
@@ -136,6 +148,18 @@ def is_zero(x):
             "'number' must be a number. Actual type of 'number': ", type(x) 
         )
     return x == 0
+
+def test_divide_safely():
+    assert divide_safely.__doc__
+    assert divide_safely(1.2, 0.3) > 0.0
+    
+    has_thrown = False
+    try:
+        divide_safely(1.1, 0.0)
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
 
 def test_is_dividable_by_three():
     assert is_dividable_by_three.__doc__
@@ -218,6 +242,7 @@ def test_is_zero():
 
 if __name__ == "__main__":
     print("Start of tests")
+    test_divide_safely()
     test_is_dividable_by_three()
     test_is_even()
     test_is_number()
