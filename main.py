@@ -14,7 +14,6 @@
 `is_odd(x)`                   |Returns `True` if `x` is odd
 `is_probability(p)`           
 `is_string(x)`                |Returns `True` if `s` is a string
-`is_zero(x)`                  |Returns `True` if `x` is zero
 
 ### Medium
 
@@ -64,27 +63,54 @@ Name                          |Purpose
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
 
+def is_string(x):
+    """
+    Determine if `x` is a string
+    
+    Returns `True` if `x` is string
+    """
+    return isinstance(x, str)
+
 def is_zero(x):
+    """
+    Determine if `x` is zero
+    
+    Returns `True` if `x` is zero
+    """
     if not isinstance(x, int):
         raise TypeError(
             "'number' must be a number"
         )
     return x == 0
 
+def test_is_string():
+    assert is_string("Hello")
+    assert is_string.__doc__
+    
 
 def test_is_zero():
     assert is_zero(0)
     assert not is_zero(1)
-    assert not is_zero(1)
-
+    
     has_thrown = False
     try:
-        is_zero("")
+        is_zero( { 1, 2 } )
     except TypeError:
         has_thrown = True
     assert has_thrown
 
+    has_thrown = False
+    try:
+        is_zero("I am a string")
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
+
+    assert is_zero.__doc__
+
 if __name__ == "__main__":
     print("Start of tests")
-    test_is_zero()    
+    test_is_string()    
+    test_is_zero()
+    print(is_zero.__doc__)
     print("All tests passed")
