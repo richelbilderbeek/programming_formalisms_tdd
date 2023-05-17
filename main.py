@@ -192,6 +192,9 @@ def test_are_strings():
     assert are_strings.__doc__
     assert are_strings(["A"])
     assert are_strings(["A", "B"])
+    assert not are_strings("A")
+    assert not are_strings(3.14)
+    assert not are_strings(["A", 3.14])
     assert not are_strings([])
 
 def test_divide_safely():
