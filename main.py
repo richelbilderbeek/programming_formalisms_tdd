@@ -9,7 +9,6 @@
 `check_is_string(x)`       
 `divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
-`is_probability(p)`           
 
 ### Medium
 
@@ -58,6 +57,19 @@ Name                          |Purpose
 `is_primorial_prime(x)`       |Returns `True` if `x` is a primorial prime
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
+
+def is_dividable_by_three(x):
+    """
+    Determine if `x` is dividable by three.
+    If `x` is not an integer number, a `TypeError` is raised.
+    
+    Returns `True` if `x` is dividable by three
+    """
+    if not isinstance(x, int):
+        raise TypeError(
+            "'number' must be a number. Actual type of 'number': ", type(x) 
+        )
+    return x % 3 == 0
 
 def is_even(x):
     """
@@ -124,6 +136,17 @@ def is_zero(x):
             "'number' must be a number. Actual type of 'number': ", type(x) 
         )
     return x == 0
+
+def test_is_dividable_by_three():
+    assert is_dividable_by_three.__doc__
+    assert not is_dividable_by_three(2)
+
+    has_thrown = False
+    try:
+        is_dividable_by_three(3.14)
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
 
 def test_is_even():
     assert is_even.__doc__
@@ -195,6 +218,7 @@ def test_is_zero():
 
 if __name__ == "__main__":
     print("Start of tests")
+    test_is_dividable_by_three()
     test_is_even()
     test_is_number()
     test_is_odd()
