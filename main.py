@@ -10,10 +10,8 @@
 `divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
 `is_even(x)`                  |Returns `True` if `x` is even
-`is_number(x)`                |Returns `True` if `x` is a number
 `is_odd(x)`                   |Returns `True` if `x` is odd
 `is_probability(p)`           
-`is_string(x)`                |Returns `True` if `s` is a string
 
 ### Medium
 
@@ -63,28 +61,45 @@ Name                          |Purpose
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
 
+def is_number(x):
+    """
+    Determine if `x` is one number,
+    for example, '42' or '3.14.
+    
+    Returns `True` if `x` is one number
+    """
+    return isinstance(x, (int, float) )
+
 def is_string(x):
     """
-    Determine if `x` is a string
+    Determine if `x` is one string
     
-    Returns `True` if `x` is string
+    Returns `True` if `x` one string
     """
     return isinstance(x, str)
 
 def is_zero(x):
     """
-    Determine if `x` is zero
+    Determine if `x` is zero.
+    If `x` is not a number, a `TypeError` is raised.
     
     Returns `True` if `x` is zero
     """
     if not isinstance(x, int):
         raise TypeError(
-            "'number' must be a number"
+            "'number' must be a number. Actual type of 'number': ", type(x) 
         )
     return x == 0
 
+def test_is_number():
+    assert is_number.__doc__
+    assert is_number(42)
+    assert is_number(3.14)
+    assert not is_number("a string")
+
 def test_is_string():
     assert is_string("Hello")
+    assert not is_string( { "Hello", "too much strings" } )
     assert is_string.__doc__
     
 
@@ -110,7 +125,18 @@ def test_is_zero():
 
 if __name__ == "__main__":
     print("Start of tests")
+    test_is_number()
     test_is_string()    
     test_is_zero()
+    
+    # Show the documentation
     print(is_zero.__doc__)
+
+    # Show an exception
+    try:
+        is_zero("should be a number")
+    except TypeError as e:
+        print(e)
+    
+    
     print("All tests passed")
