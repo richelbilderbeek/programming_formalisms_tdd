@@ -1,5 +1,4 @@
 '''
-`are_numbers(x)`         
 `are_strings(x)`         
 `check_are_numbers(x)`   
 `check_different(a, b)`  
@@ -55,6 +54,37 @@ Name                          |Purpose
 `is_primorial_prime(x)`       |Returns `True` if `x` is a primorial prime
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
+
+def are_numbers(x):
+    """
+    Determine if `x` is one or more numbers.
+    Numbers can be integer or floating point
+    
+    Returns `True` if `x` is one or more numbers.
+    """
+    if not isinstance(x, list):
+        return False
+    if len(x) == 0:
+        return False
+    for e in x:
+        if not is_number(e):
+            return False
+    return True
+
+def are_strings(x):
+    """
+    Determine if `x` is one or more strings.
+    
+    Returns `True` if `x` is one or more strings.
+    """
+    if not isinstance(x, list):
+        return False
+    if len(x) == 0:
+        return False
+    for e in x:
+        if not is_string(e):
+            return False
+    return True
 
 def divide_safely(a, b):
     """
@@ -149,6 +179,20 @@ def is_zero(x):
         )
     return x == 0
 
+def test_are_numbers():
+    assert are_numbers.__doc__
+    assert not are_numbers(":-/")
+    assert are_numbers([1, 2])
+    assert are_numbers([1.1])
+    assert not are_numbers([ ])
+    assert not are_numbers(["1.2"])
+
+def test_are_strings():
+    assert are_strings.__doc__
+    assert are_strings(["A"])
+    assert are_strings(["A", "B"])
+    assert not are_strings([])
+
 def test_divide_safely():
     assert divide_safely.__doc__
     assert divide_safely(1.2, 0.3) > 0.0
@@ -242,6 +286,8 @@ def test_is_zero():
 
 if __name__ == "__main__":
     print("Start of tests")
+    test_are_numbers()
+    test_are_strings()
     test_divide_safely()
     test_is_dividable_by_three()
     test_is_even()
