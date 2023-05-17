@@ -1,162 +1,91 @@
-from collections import deque
-from functools import partial
-from itertools import product
+'''
+`are_numbers(x)`              |Returns `True` if `x` is zero, one or more numbers
+`are_strings(x)`              |Returns `True` if `x` is zero, one or more strings
+`check_are_numbers(x)`        |Throws a helpful error if `x` is not zero, one or more numbers
+`check_different(a, b)`       |Throws a helpful error if `a` and `b` are not different
+`check_equal(a, b)`           |Throws a helpful error if `a` and `b` are different
+`check_is_number(x)`          |Throws a helpful error if `x` is not a number
+`check_is_probability(p)`     |Throws a helpful error if `p` is not a probability (i.e. a chance of something happening)
+`check_is_string(x)`          |Throws a helpful error if `s` is not a string
+`divide_safely(a, b)`         |Divide `a` by `b`, throws a helpful error if `b` is zero
+`is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
+`is_even(x)`                  |Returns `True` if `x` is even
+`is_number(x)`                |Returns `True` if `x` is a number
+`is_odd(x)`                   |Returns `True` if `x` is odd
+`is_probability(p)`           |Returns `True` if `p` is a probability (i.e. a chance of something happening)
+`is_string(x)`                |Returns `True` if `s` is a string
+`is_zero(x)`                  |Returns `True` if `x` is zero
 
-def add_one(x):
-    return x + 1
+### Medium
 
-def align_bf(x, y):
-    """Align two sequences, maximizing the
-    alignment score, using brute force.
+Name                          |Purpose
+------------------------------|-----------------------------------------------------------------------
+`are_primes(x)`               |Returns `True`/`False` for each element in `x` being prime yes/no
+`are_primes(x, m)`            |Returns `True`/`False` for each element in `x` being prime yes/no using method `m`
+`calc_p_is_prime(x, m)`       |Returns the change that number `x` is prime using method `m`
+`can_use_prime_method(x, m)`  |Returns `True` if `m` is a prime finding method that can be used on `x`
+`get_all_prime_methods()`     |Returns all prime finding methods
+`get_digits(n)`               |Returns all the digits of number `n`
+`get_proper_divisors(n)`      |Returns all proper divisors of number `n`
+`is_palindrome(n)`            |Returns `True` if the number `n` is a palindrome
+`is_palindrome(s)`            |Returns `True` if the string `s` is a palindrome
+`is_perfect(x)`               |Returns `True` if `x` is a perfect number
+`is_prime(x)`                 |Returns `True` if `x` is prime
+`is_prime(x, m)`              |Returns `True` if `x` is prime using method `m`
+`is_prime_td(x)`              |Returns `True` if `x` is prime using the Trial Division method
+`is_prime_ss(x)`              |Returns `True` if `x` is likely to be prime using the Solovay-Strassen method
+`is_prime_ss(x, p)`           |Returns `True` if `x` is likelier than probability `p` to be prime using the Solovay-Strassen method
+`is_prime_method(m)`          |Returns `True` if `m` is a prime finding method
+`is_roman_number(s)`          |Returns `True` if `s` is a string that is a roman number
+`sum_digits(x)`               |Returns the sum of the digits of number `x`
+`to_roman_number(s)`          |Returns a number equivalent to the roman number that is string `s`
 
-    x, y -- sequences.
-    """
-    return max(
-        all_alignments(x, y),
-        key=partial(alignment_score, x, y),
-    )
+### Hard
 
-def align_fast(x, y):
-    """Align two sequences, maximizing the
-    alignment score, using the Needleman-Wunsch
-    algorithm.
+Name                          |Purpose
+------------------------------|-----------------------------------------------------------------------
+`calc_p_is_prime_bpsw(x)`     |Returns the chance that number `x` is prime using the Baillie-PSW primality test
+`calc_p_is_prime_mr(x)`       |Returns the chance that number `x` is prime using the Miller-Rabin primality test
+`calc_p_is_prime_ss(x)`       |Returns the chance that number `x` is prime using the Solovay-Strassen primality method
+`is_coprime(a, b)`            |Returns `True` is `a` is coprime to `b`
+`is_factorial_prime(x)`       |Returns `True` if `x` is a factorial prime
+`is_mersenne_prime(x)`        |Returns `True` if `x` is a Mersenne prime
+`is_proth_prime(x)`           |Returns `True` if `x` is a Proth prime
+`is_perfect_power(x)`         |Returns `True` if `x` is a perfect power
+`is_prime_aks(x)`             |Returns `True` if `x` is prime using the Agrawal-Kayal-Saxena primality test
+`is_prime_bpsw(x)`            |Returns `True` if `x` is likely to be prime using the Baillie-PSW primality test
+`is_prime_ec(x)`              |Returns `True` if `x` is prime using an elliptic curve primality test
+`is_prime_ec(x, m)`           |Returns `True` if `x` is prime using the elliptic curve primality test `m`
+`is_prime_eccm(x)`            |Returns `True` if `x` is prime using the complex multiplication elliptic curve primality test
+`is_prime_ecpp(x)`            |Returns `True` if `x` is prime using the Atkin-Morain elliptic curve primality test
+`is_prime_ecgk(x)`            |Returns `True` if `x` is prime using the Goldwasser-Kilian elliptic curve primality test
+`is_prime_mr(x)`              |Returns `True` if `x` is likely to be prime using the Miller-Rabin primality test
+`is_primorial_prime(x)`       |Returns `True` if `x` is a primorial prime
+`is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
+'''
 
-    x, y -- sequences.
-    """
-    return needleman_wunsch(x, y)
-
-
-def alignment_score(x, y, alignment):
-    """Score an alignment.
-
-    x, y -- sequences.
-    alignment -- an alignment of x and y.
-    """
-    score_gap = -1
-    score_same = +1
-    score_different = -1
-
-    score = 0
-    for i, j in alignment:
-        if (i is None) or (j is None):
-            score += score_gap
-        elif x[i] == y[j]:
-            score += score_same
-        elif x[i] != y[j]:
-            score += score_different
-
-    return score
-
-def all_alignments(x, y):
-    """Return an iterable of all alignments of two
-    sequences.
-
-    x, y -- Sequences.
-    """
-
-    def F(x, y):
-        """A helper function that recursively builds the
-        alignments.
-
-        x, y -- Sequence indices for the original x and y.
-        """
-        if len(x) == 0 and len(y) == 0:
-            yield deque()
-
-        scenarios = []
-        if len(x) > 0 and len(y) > 0:
-            scenarios.append((x[0], x[1:], y[0], y[1:]))
-        if len(x) > 0:
-            scenarios.append((x[0], x[1:], None, y))
-        if len(y) > 0:
-            scenarios.append((None, x, y[0], y[1:]))
-
-        # NOTE: "xh" and "xt" stand for "x-head" and "x-tail",
-        # with "head" being the front of the sequence, and
-        # "tail" being the rest of the sequence. Similarly for
-        # "yh" and "yt".
-        for xh, xt, yh, yt in scenarios:
-            for alignment in F(xt, yt):
-                alignment.appendleft((xh, yh))
-                yield alignment
-
-    alignments = F(range(len(x)), range(len(y)))
-    return map(list, alignments)
-
-
-def needleman_wunsch(x, y):
-    """Run the Needleman-Wunsch algorithm on two sequences.
-
-    x, y -- sequences.
-
-    Code based on pseudocode in Section 3 of:
-
-    Naveed, Tahir; Siddiqui, Imitaz Saeed; Ahmed, Shaftab.
-    "Parallel Needleman-Wunsch Algorithm for Grid." n.d.
-    https://upload.wikimedia.org/wikipedia/en/c/c4/ParallelNeedlemanAlgorithm.pdf
-    """
-    N, M = len(x), len(y)
-    s = lambda a, b: int(a == b)
-
-    DIAG = -1, -1
-    LEFT = -1, 0
-    UP = 0, -1
-
-    # Create tables F and Ptr
-    F = {}
-    Ptr = {}
-
-    F[-1, -1] = 0
-    for i in range(N):
-        F[i, -1] = -i
-    for j in range(M):
-        F[-1, j] = -j
-
-    option_Ptr = DIAG, LEFT, UP
-    for i, j in product(range(N), range(M)):
-        option_F = (
-            F[i - 1, j - 1] + s(x[i], y[j]),
-            F[i - 1, j] - 1,
-            F[i, j - 1] - 1,
+def is_zero(x):
+    if not isinstance(x, int):
+        raise TypeError(
+            "'number' must be a number"
         )
-        F[i, j], Ptr[i, j] = max(zip(option_F, option_Ptr))
+    return x == 0
 
-    # Work backwards from (N - 1, M - 1) to (0, 0)
-    # to find the best alignment.
-    alignment = deque()
-    i, j = N - 1, M - 1
-    while i >= 0 and j >= 0:
-        direction = Ptr[i, j]
-        if direction == DIAG:
-            element = i, j
-        elif direction == LEFT:
-            element = i, None
-        elif direction == UP:
-            element = None, j
-        alignment.appendleft(element)
-        di, dj = direction
-        i, j = i + di, j + dj
-    while i >= 0:
-        alignment.appendleft((i, None))
-        i -= 1
-    while j >= 0:
-        alignment.appendleft((None, j))
-        j -= 1
-
-    return list(alignment)
-
-def print_alignment(x, y, alignment):
-    print("".join(
-        "-" if i is None else x[i] for i, _ in alignment
-    ))
-    print("".join(
-        "-" if  j is None else y[j] for _, j in alignment
-    ))
 
 if __name__ == "__main__":
-    sequence_1 = "GCATGCG"
-    sequence_2 = "GATTACA"
-    print("Brute-force:")
-    print_alignment(sequence_1, sequence_2, align_bf(sequence_1, sequence_2))
-    print("needleman_wunsch:")
-    print_alignment(sequence_1, sequence_2, align_fast(sequence_1, sequence_2))
+    print("Start of tests")
+    
+    if "is_zero":
+        assert is_zero(0)
+        assert not is_zero(1)
+        assert not is_zero(1)
+
+        has_thrown = False
+        try:
+            is_zero("")
+        except:
+            has_thrown = True
+        assert has_thrown
+    
+    
+    print("All tests passed")
