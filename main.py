@@ -154,7 +154,8 @@ def is_probability(x):
     """
     if not isinstance(x, float):
         raise TypeError(
-            "'number' must be a floating point number. Actual type of 'number': ", type(x) 
+            "'number' must be a floating point number. ",
+            "Actual type of 'number': ", type(x) 
         )
     return x >= 0.0 and x <= 1.0
 
@@ -175,7 +176,8 @@ def is_zero(x):
     """
     if not isinstance(x, (int, float)):
         raise TypeError(
-            "'number' must be a number. Actual type of 'number': ", type(x) 
+            "'number' must be a number. ",
+            "Actual type of 'number': ", type(x) 
         )
     return x == 0
 
