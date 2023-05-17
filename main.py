@@ -72,20 +72,19 @@ def is_zero(x):
     return x == 0
 
 
+def test_is_zero():
+    assert is_zero(0)
+    assert not is_zero(1)
+    assert not is_zero(1)
+
+    has_thrown = False
+    try:
+        is_zero("")
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
+
 if __name__ == "__main__":
     print("Start of tests")
-    
-    if "is_zero":
-        assert is_zero(0)
-        assert not is_zero(1)
-        assert not is_zero(1)
-
-        has_thrown = False
-        try:
-            is_zero("")
-        except TypeError:
-            has_thrown = True
-        assert has_thrown
-    
-    
+    test_is_zero()    
     print("All tests passed")
