@@ -9,7 +9,6 @@
 `check_is_string(x)`       
 `divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
-`(x)`                  |Returns `True` if `x` is even
 `is_odd(x)`                   |Returns `True` if `x` is odd
 `is_probability(p)`           
 
@@ -83,6 +82,15 @@ def is_number(x):
     """
     return isinstance(x, (int, float) )
 
+def is_odd(x):
+    """
+    Determine if `x` is odd.
+    If `x` is not an integer number, a `TypeError` is raised.
+    
+    Returns `True` if `x` is odd
+    """
+    return not is_even(x)
+
 def is_string(x):
     """
     Determine if `x` is one string
@@ -121,6 +129,17 @@ def test_is_number():
     assert is_number(42)
     assert is_number(3.14)
     assert not is_number("a string")
+
+def test_is_odd():
+    assert is_odd.__doc__
+    assert not is_odd(2)
+
+    has_thrown = False
+    try:
+        is_odd(3.14)
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
 
 def test_is_string():
     assert is_string("Hello")
