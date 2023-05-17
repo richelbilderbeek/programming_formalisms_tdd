@@ -1,9 +1,4 @@
 '''
-`check_are_numbers(x)`   
-`check_different(a, b)`  
-`check_equal(a, b)`      
-`check_is_number(x)`     
-`check_is_probability(p)`  
 `check_is_string(x)`       
 
 ### Medium
@@ -95,6 +90,75 @@ def check_are_numbers(x):
     if not are_numbers(x):
         raise RuntimeError(
             "'x' must be numbers. ",
+            "Actual value of 'x': ", x
+        )
+
+
+def check_different(a, b):
+    """
+    Determine if `a` and `b` are different.
+    
+    Raises `RuntimeError` when not.
+    
+    Returns nothing.
+    """
+    if a == b:
+        raise RuntimeError(
+            "'a' and 'b' must be different. ",
+            "Value of 'a': ", a
+        )
+
+def check_equal(a, b):
+    """
+    Determine if `a` and `b` are equal.
+    
+    Raises `RuntimeError` when not.
+    
+    Returns nothing.
+    """
+    if not a == b:
+        raise RuntimeError(
+            "'a' and 'b' must be equal. ",
+            "Value of 'a': ", a, ". ",
+            "Value of 'b': ", b
+        )
+
+def check_is_number(x):
+    """
+    Determine if `x` is a number.
+    If `x` is not a number, a `RuntimeError` is raised.
+    
+    Returns nothing.
+    """
+    if not is_number(x):
+        raise RuntimeError(
+            "'x' must be a number. ",
+            "Actual value of 'x': ", x
+        )
+
+def check_is_probability(x):
+    """
+    Determine if `x` is a probability.
+    If `x` is not a probability, a `RuntimeError` is raised.
+    
+    Returns nothing.
+    """
+    if not is_probability(x):
+        raise RuntimeError(
+            "'x' must be a probability. ",
+            "Actual value of 'x': ", x
+        )
+
+def check_is_string(x):
+    """
+    Determine if `x` is a string.
+    If `x` is not a string, a `RuntimeError` is raised.
+    
+    Returns nothing.
+    """
+    if not is_string(x):
+        raise RuntimeError(
+            "'x' must be a string. ",
             "Actual value of 'x': ", x
         )
 
@@ -212,6 +276,104 @@ def test_are_strings():
 
 def test_check_are_numbers():
     assert check_are_numbers.__doc__
+    assert are_numbers([3.14])
+    assert are_numbers([3.14, 42])
+    assert not are_numbers("A")
+    assert not are_numbers(3.14)
+    assert not are_numbers(["A", 3.14])
+    assert not are_numbers([])
+
+def test_check_different():
+    assert check_different.__doc__
+    check_different(1.2, 1.3)
+    check_different(1.2, "A")
+    
+    has_thrown = False
+    try:
+        check_different(1.1, 1.1)
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+    has_thrown = False
+    try:
+        check_different("1.1", "1.1")
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+def test_check_equal():
+    assert check_equal.__doc__
+    check_equal(1.2, 1.2)
+    check_equal("A", "A")
+    
+    has_thrown = False
+    try:
+        check_equal(1.1, 1.2)
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+    has_thrown = False
+    try:
+        check_equal(1.1, "1.1")
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+def test_check_is_number():
+    assert check_is_number.__doc__
+    check_is_number(1.2)
+    
+    has_thrown = False
+    try:
+        check_is_number( [1.1, 1.2] )
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+    has_thrown = False
+    try:
+        check_is_number("1.1")
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+def test_check_is_probability():
+    assert check_is_probability.__doc__
+    check_is_probability(0.2)
+    
+    has_thrown = False
+    try:
+        check_is_probability( [0.1, 0.2] )
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+    has_thrown = False
+    try:
+        check_is_probability("0.1")
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+def test_check_is_string():
+    assert check_is_string.__doc__
+    check_is_string("A")
+    
+    has_thrown = False
+    try:
+        check_is_string( ["A", "B"] )
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
+    has_thrown = False
+    try:
+        check_is_string(3.14)
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
 
 def test_divide_safely():
     assert divide_safely.__doc__
@@ -309,6 +471,11 @@ if __name__ == "__main__":
     test_are_numbers()
     test_are_strings()
     test_check_are_numbers()
+    test_check_different()
+    test_check_equal()
+    test_check_is_number()
+    # test_check_is_probability()
+    test_check_is_string()
     test_divide_safely()
     test_is_dividable_by_three()
     test_is_even()
