@@ -1,5 +1,4 @@
 '''
-`are_strings(x)`         
 `check_are_numbers(x)`   
 `check_different(a, b)`  
 `check_equal(a, b)`      
