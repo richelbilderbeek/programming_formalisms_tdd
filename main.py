@@ -85,6 +85,19 @@ def are_strings(x):
             return False
     return True
 
+def check_are_numbers(x):
+    """
+    Determine if `x` is one or more numbers.
+    If `x` is not one or more numbers, a `RuntimeError` is raised.
+    
+    Returns nothing.
+    """
+    if not are_numbers(x):
+        raise RuntimeError(
+            "'x' must be numbers. ",
+            "Actual value of 'x': ", x
+        )
+
 def divide_safely(a, b):
     """
     Divide `a` by `b`.
@@ -197,6 +210,9 @@ def test_are_strings():
     assert not are_strings(["A", 3.14])
     assert not are_strings([])
 
+def test_check_are_numbers():
+    assert check_are_numbers.__doc__
+
 def test_divide_safely():
     assert divide_safely.__doc__
     assert divide_safely(1.2, 0.3) > 0.0
@@ -292,6 +308,7 @@ if __name__ == "__main__":
     print("Start of tests")
     test_are_numbers()
     test_are_strings()
+    test_check_are_numbers()
     test_divide_safely()
     test_is_dividable_by_three()
     test_is_even()
