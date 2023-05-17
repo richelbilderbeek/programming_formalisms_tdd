@@ -9,7 +9,6 @@
 `check_is_string(x)`       
 `divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
-`is_odd(x)`                   |Returns `True` if `x` is odd
 `is_probability(p)`           
 
 ### Medium
@@ -91,6 +90,20 @@ def is_odd(x):
     """
     return not is_even(x)
 
+def is_probability(x):
+    """
+    Determine if `x` is a probability,
+    i.e. a value between 0.0 and 1.0, including both 0.0 and 1.0.
+    If `x` is not a floating point number, a `TypeError` is raised.
+    
+    Returns `True` if `x` is a probability
+    """
+    if not isinstance(x, float):
+        raise TypeError(
+            "'number' must be a floating point number. Actual type of 'number': ", type(x) 
+        )
+    return x >= 0.0 and x <= 1.0
+
 def is_string(x):
     """
     Determine if `x` is one string
@@ -141,6 +154,19 @@ def test_is_odd():
         has_thrown = True
     assert has_thrown
 
+def test_is_probability():
+    assert is_probability.__doc__
+    assert is_probability(0.1)
+    assert not is_probability(1.2)
+    assert not is_probability(-1.2)
+    
+    has_thrown = False
+    try:
+        is_probability("I am a string")
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
+
 def test_is_string():
     assert is_string("Hello")
     assert not is_string( { "Hello", "too much strings" } )
@@ -148,6 +174,7 @@ def test_is_string():
     
 
 def test_is_zero():
+    assert is_zero.__doc__
     assert is_zero(0)
     assert is_zero(0.0)
     assert not is_zero(1)
@@ -166,13 +193,12 @@ def test_is_zero():
         has_thrown = True
     assert has_thrown
 
-    assert is_zero.__doc__
-
 if __name__ == "__main__":
     print("Start of tests")
     test_is_even()
     test_is_number()
     test_is_odd()
+    test_is_probability()
     test_is_string()    
     test_is_zero()
     
