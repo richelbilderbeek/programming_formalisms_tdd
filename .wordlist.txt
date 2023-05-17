@@ -5,10 +5,13 @@ behaviour
 Bilderbeek
 Bioinformatics
 codebase
+Codecov
 CodeRefinery
 CVs
 fibonacci
 findLargest
+Formalisms
+formalisms
 GitHub
 Hackathons
 Hamcrest
