@@ -7,6 +7,7 @@ Bioinformatics
 codebase
 Codecov
 CodeRefinery
+config
 CVs
 fibonacci
 findLargest
@@ -16,11 +17,13 @@ GitHub
 Hackathons
 Hamcrest
 hardcoded
+json
 linter
 LUT
 LUTs
 megacorporation
 Megacorporation
+mlc
 NBIS
 Nonsolutions
 normalise
@@ -53,6 +56,10 @@ sourcery
 Richèl
 Tidyverse
 Tribonacci
+txt
 Walkthroughs
 Wiegers
+wordlist
+wordss
+yaml
 Zenodo
