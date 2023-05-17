@@ -44,6 +44,8 @@ Pseudocode
 pseudocode
 py
 PyCharm
+pylint
+pylintrc
 pythonic
 QMD
 qubits
