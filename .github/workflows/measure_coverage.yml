@@ -1,3 +1,4 @@
+# Measure the percentage of code covered by tests
 name: Measure Codecov
 
 on:

@@ -1,5 +1,6 @@
+# Check if all code follows a recommended coding standard
 # From https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#using-ruff-to-lint-code
-name: lint code
+name: Lint code
 
 on:
   push:
