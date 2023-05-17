@@ -14,9 +14,9 @@ there will be a formal testing framework.
 
 ## Files
 
-Filename                            |Descriptions
-------------------------------------|------------------------------------------------------------------------------------------------------
-[mlc_config.json](mlc_config.json)  |Configuration of the link checker
-[.spellcheck.yaml](.spellcheck.yaml)|Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
-[.wordlist.txt](.wordlist.txt)      |Whitelisted wordss for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+Filename                           |Descriptions
+-----------------------------------|------------------------------------------------------------------------------------------------------
+[mlc_config.json](mlc_config.json) |Configuration of the link checker
+[.spellcheck.yml](.spellcheck.yml) |Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+[.wordlist.txt](.wordlist.txt)     |Whitelisted wordss for the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
 
