@@ -8,3 +8,10 @@ as the focus of this part of the course is to do many iterations of TDD.
 In [The Medium Project](https://github.com/UPPMAX/programming_formalisms/blob/main/learning_line.md#functions-to-be-developed-for-the-medium-project)
 there will be a formal testing framework.
 
+## Files
+
+Filename          |Descriptions
+------------------|---------------------------------------------------------------------------------------
+`mlc_config.json` |Used by the link checker
+`.spellcheck.yaml`|Used by the spell checker, use `pyspelling -c .spellcheck.yml` to do spellcheck locally
+
