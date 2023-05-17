@@ -1,9 +1,9 @@
-def add_one(x):
-    return x + 1
-
 from collections import deque
 from functools import partial
 from itertools import product
+
+def add_one(x):
+    return x + 1
 
 def align_bf(x, y):
     """Align two sequences, maximizing the
