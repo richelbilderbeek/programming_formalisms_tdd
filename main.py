@@ -1,13 +1,13 @@
 '''
-`are_numbers(x)`              |Returns `True` if `x` is zero, one or more numbers
-`are_strings(x)`              |Returns `True` if `x` is zero, one or more strings
-`check_are_numbers(x)`        |Throws a helpful error if `x` is not zero, one or more numbers
-`check_different(a, b)`       |Throws a helpful error if `a` and `b` are not different
-`check_equal(a, b)`           |Throws a helpful error if `a` and `b` are different
-`check_is_number(x)`          |Throws a helpful error if `x` is not a number
+`are_numbers(x)`         
+`are_strings(x)`         
+`check_are_numbers(x)`   
+`check_different(a, b)`  
+`check_equal(a, b)`      
+`check_is_number(x)`     
 `check_is_probability(p)`  
 `check_is_string(x)`       
-`divide_safely(a, b)`         |Divide `a` by `b`, throws a helpful error if `b` is zero
+`divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
 `is_even(x)`                  |Returns `True` if `x` is even
 `is_number(x)`                |Returns `True` if `x` is a number
@@ -19,31 +19,31 @@
 ### Medium
 
 Name                          |Purpose
-------------------------------|-----------------------------------------------------------------------
-`are_primes(x)`               |Returns `True`/`False` for each element in `x` being prime yes/no
+------------------------------|----------------------------------------------
+`are_primes(x)`      
 `are_primes(x, m)`            
 `calc_p_is_prime(x, m)`       
 `can_use_prime_method(x, m)`  
 `get_all_prime_methods()`     |Returns all prime finding methods
 `get_digits(n)`               |Returns all the digits of number `n`
 `get_proper_divisors(n)`      |Returns all proper divisors of number `n`
-`is_palindrome(n)`            |Returns `True` if the number `n` is a palindrome
-`is_palindrome(s)`            |Returns `True` if the string `s` is a palindrome
-`is_perfect(x)`               |Returns `True` if `x` is a perfect number
+`is_palindrome(n)`         
+`is_palindrome(s)`         
+`is_perfect(x)`            
 `is_prime(x)`                 |Returns `True` if `x` is prime
-`is_prime(x, m)`              |Returns `True` if `x` is prime using method `m`
-`is_prime_td(x)`              |Returns `True` if `x` is prime using the Trial Division method
+`is_prime(x, m)`     
+`is_prime_td(x)`     
 `is_prime_ss(x)`              
 `is_prime_ss(x, p)`        
-`is_prime_method(m)`          |Returns `True` if `m` is a prime finding method
-`is_roman_number(s)`          |Returns `True` if `s` is a string that is a roman number
-`sum_digits(x)`               |Returns the sum of the digits of number `x`
-`to_roman_number(s)`          |Returns a number equivalent to the roman number that is string `s`
+`is_prime_method(m)`       
+`is_roman_number(s)` 
+`sum_digits(x)`            
+`to_roman_number(s)` 
 
 ### Hard
 
 Name                          |Purpose
-------------------------------|-----------------------------------------------------------------------
+------------------------------|----------------------------------------------
 `calc_p_is_prime_bpsw(x)`     
 `calc_p_is_prime_mr(x)`       
 `calc_p_is_prime_ss(x)`       
