@@ -9,7 +9,7 @@
 `check_is_string(x)`       
 `divide_safely(a, b)`    
 `is_dividable_by_three(x)`    |Returns `True` if `x` is dividable by 3
-`is_even(x)`                  |Returns `True` if `x` is even
+`(x)`                  |Returns `True` if `x` is even
 `is_odd(x)`                   |Returns `True` if `x` is odd
 `is_probability(p)`           
 
@@ -61,6 +61,19 @@ Name                          |Purpose
 `is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
 '''
 
+def is_even(x):
+    """
+    Determine if `x` is even.
+    If `x` is not an integer number, a `TypeError` is raised.
+    
+    Returns `True` if `x` is even
+    """
+    if not isinstance(x, int):
+        raise TypeError(
+            "'number' must be a number. Actual type of 'number': ", type(x) 
+        )
+    return x % 2 == 0
+
 def is_number(x):
     """
     Determine if `x` is one number,
@@ -85,11 +98,23 @@ def is_zero(x):
     
     Returns `True` if `x` is zero
     """
-    if not isinstance(x, int):
+    if not isinstance(x, (int, float)):
         raise TypeError(
             "'number' must be a number. Actual type of 'number': ", type(x) 
         )
     return x == 0
+
+def test_is_even():
+    assert is_even.__doc__
+    assert not is_even(1)
+
+    has_thrown = False
+    try:
+        is_even(3.14)
+    except TypeError:
+        has_thrown = True
+    assert has_thrown
+
 
 def test_is_number():
     assert is_number.__doc__
@@ -105,6 +130,7 @@ def test_is_string():
 
 def test_is_zero():
     assert is_zero(0)
+    assert is_zero(0.0)
     assert not is_zero(1)
     
     has_thrown = False
@@ -125,6 +151,7 @@ def test_is_zero():
 
 if __name__ == "__main__":
     print("Start of tests")
+    test_is_even()
     test_is_number()
     test_is_string()    
     test_is_zero()
