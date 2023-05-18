@@ -311,6 +311,13 @@ def test_check_is_probability():
         has_thrown = True
     assert has_thrown
 
+    has_thrown = False
+    try:
+        check_is_probability(123.456)
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
+
 def test_check_is_string():
     assert check_is_string.__doc__
     check_is_string("A")
