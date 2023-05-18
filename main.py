@@ -230,12 +230,14 @@ def test_are_strings():
 
 def test_check_are_numbers():
     assert check_are_numbers.__doc__
-    assert are_numbers([3.14])
-    assert are_numbers([3.14, 42])
-    assert not are_numbers("A")
-    assert not are_numbers(3.14)
-    assert not are_numbers(["A", 3.14])
-    assert not are_numbers([])
+    assert check_are_numbers([3.14])
+    assert check_are_numbers([3.14, 42])
+    has_thrown = False
+    try:
+        check_are_numbers("A")
+    except RuntimeError:
+        has_thrown = True
+    assert has_thrown
 
 def test_check_different():
     assert check_different.__doc__
