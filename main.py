@@ -143,15 +143,12 @@ def check_is_probability(x):
     
     Returns nothing.
     """
-    try:
-        if not is_probability(x):
-            raise RuntimeError(
-                "'x' must be a probability. ",
-                "Actual value of 'x': ", x
-            )
-    except TypeError:
-        raise
-
+    check_is_number(x)
+    if not is_probability(x):
+        raise RuntimeError(
+            "'x' must be a probability. ",
+            "Actual value of 'x': ", x
+        )
 
 def check_is_string(x):
     """
@@ -478,7 +475,7 @@ if __name__ == "__main__":
     test_check_different()
     test_check_equal()
     test_check_is_number()
-    # test_check_is_probability()
+    test_check_is_probability()
     test_check_is_string()
     test_divide_safely()
     test_is_dividable_by_three()
