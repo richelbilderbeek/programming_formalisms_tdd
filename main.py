@@ -143,11 +143,15 @@ def check_is_probability(x):
     
     Returns nothing.
     """
-    if not is_probability(x):
-        raise RuntimeError(
-            "'x' must be a probability. ",
-            "Actual value of 'x': ", x
-        )
+    try:
+        if not is_probability(x):
+            raise RuntimeError(
+                "'x' must be a probability. ",
+                "Actual value of 'x': ", x
+            )
+    except TypeError:
+        raise
+
 
 def check_is_string(x):
     """
@@ -493,6 +497,5 @@ if __name__ == "__main__":
         is_zero("should be a number")
     except TypeError as e:
         print(e)
-    
     
     print("All tests passed")
