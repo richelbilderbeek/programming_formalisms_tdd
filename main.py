@@ -1,53 +1,6 @@
-'''
-`check_is_string(x)`       
-
-### Medium
-
-Name                          |Purpose
-------------------------------|----------------------------------------------
-`are_primes(x)`      
-`are_primes(x, m)`            
-`calc_p_is_prime(x, m)`       
-`can_use_prime_method(x, m)`  
-`get_all_prime_methods()`     |Returns all prime finding methods
-`get_digits(n)`               |Returns all the digits of number `n`
-`get_proper_divisors(n)`      |Returns all proper divisors of number `n`
-`is_palindrome(n)`         
-`is_palindrome(s)`         
-`is_perfect(x)`            
-`is_prime(x)`                 |Returns `True` if `x` is prime
-`is_prime(x, m)`     
-`is_prime_td(x)`     
-`is_prime_ss(x)`              
-`is_prime_ss(x, p)`        
-`is_prime_method(m)`       
-`is_roman_number(s)` 
-`sum_digits(x)`            
-`to_roman_number(s)` 
-
-### Hard
-
-Name                          |Purpose
-------------------------------|----------------------------------------------
-`calc_p_is_prime_bpsw(x)`     
-`calc_p_is_prime_mr(x)`       
-`calc_p_is_prime_ss(x)`       
-`is_coprime(a, b)`            |Returns `True` is `a` is coprime to `b`
-`is_factorial_prime(x)`       |Returns `True` if `x` is a factorial prime
-`is_mersenne_prime(x)`        |Returns `True` if `x` is a Mersenne prime
-`is_proth_prime(x)`           |Returns `True` if `x` is a Proth prime
-`is_perfect_power(x)`         |Returns `True` if `x` is a perfect power
-`is_prime_aks(x)`             
-`is_prime_bpsw(x)`            
-`is_prime_ec(x)`              
-`is_prime_ec(x, m)`           
-`is_prime_eccm(x)`            
-`is_prime_ecpp(x)`            
-`is_prime_ecgk(x)`            
-`is_prime_mr(x)`              
-`is_primorial_prime(x)`       |Returns `True` if `x` is a primorial prime
-`is_twin_prime(x)`            |Returns `True` if `x` is a twin prime
-'''
+"""
+These are all the simple functions of The Small Project
+"""
 
 def are_numbers(x):
     """
