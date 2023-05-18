@@ -230,8 +230,8 @@ def test_are_strings():
 
 def test_check_are_numbers():
     assert check_are_numbers.__doc__
-    assert check_are_numbers([3.14])
-    assert check_are_numbers([3.14, 42])
+    check_are_numbers([3.14])
+    check_are_numbers([3.14, 42])
     has_thrown = False
     try:
         check_are_numbers("A")
