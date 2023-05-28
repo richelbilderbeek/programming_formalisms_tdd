@@ -5,7 +5,7 @@
 [![Measure Codecov](https://github.com/richelbilderbeek/programming_formalisms_tdd/actions/workflows/measure_coverage.yml/badge.svg?branch=master)](https://github.com/richelbilderbeek/programming_formalisms_tdd/actions/workflows/measure_coverage.yml)
 [![codecov](https://codecov.io/gh/richelbilderbeek/programming_formalisms_tdd/branch/master/graph/badge.svg?token=K4FIPOQ5ZH)](https://codecov.io/gh/richelbilderbeek/programming_formalisms_tdd)
 
-Lesson 'TDD' in [the Programming Formalisms course](https://github.com/UPPMAX/programming_formalisms).
+Lesson 'TDD' in [the UPPMAX 'Programming Formalisms' course](https://github.com/UPPMAX/programming_formalisms).
 
 This repo does not use a formal testing framework,
 as the focus of this part of the course is to do many iterations of TDD.
