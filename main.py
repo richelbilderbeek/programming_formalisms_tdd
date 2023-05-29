@@ -1,5 +1,6 @@
 """
-These are all the simple functions of The Small Project
+These are the solutions for the TDD lessons
+of the UPPMAX Programming Formalisms course
 """
 
 def are_numbers(x):
